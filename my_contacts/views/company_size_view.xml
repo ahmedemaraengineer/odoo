@@ -1,0 +1,16 @@
+<odoo>
+    <data>
+        <record id="company_size_view" model="ir.ui.view">
+            <field name="name">Company Size View</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='company_type']" position="after">
+                    <h4>
+                        <field name="company_size" attrs="{'invisible': [('is_company','=', False)]}" widget="radio" options="{'horizontal': true}"/>
+                    </h4>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

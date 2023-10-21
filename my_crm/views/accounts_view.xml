@@ -1,0 +1,53 @@
+<odoo>
+    <data>
+        <record id="accounts_action" model="ir.actions.act_window">
+            <field name="name">Accounts</field>
+            <field name="res_model">my_contacts.accounts</field>
+            <field name="view_mode">tree,form,kanban</field>
+        </record>
+
+        <menuitem id="accounts_data" parent="crm.crm_menu_sales" name="Accounts" action="accounts_action"/>
+
+
+        <record id="crm_accounts_form_view" model="ir.ui.view">
+            <field name="name">CRM Accounts Form View</field>
+            <field name="model">my_contacts.accounts</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <button name="action_view_child_accounts" type='object' class="oe_stat_button" icon="fa-bars">
+                                <div class="o_stat_info">
+                                    <field name="child_count" class="o_stat_value"/>
+                                    <span class="o_stat_text">Child Accounts</span>
+                                </div>
+                            </button>
+                        </div>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="name"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="parent_id"/>
+                            </group>
+                        </group>
+
+                        <notebook>
+                            <page name='leads' string='Leads'>
+                                <field name="lead_ids" string="Leads"/>
+                            </page>
+                            <page name='contact' string="Contact Information">
+                                <label for='primary_contact' string="Primary Conatct"/>
+                                <field name="primary_contact" string="Primary Contact"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        
+    
+    </data>
+</odoo>
